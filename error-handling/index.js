@@ -11,6 +11,12 @@ module.exports = (app) => {
 
     // only render if the error ocurred before sending the response
     if (!res.headersSent) {
+      switch(err){
+        case 404:
+          res.status(404).json({message: "BAD REQUEST"})
+      }
+
+
       res.status(500).render("error");
     }
   });
